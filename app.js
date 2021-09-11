@@ -11,9 +11,9 @@ dotenv.config();
 
 connectDB();
 
-// Rate Limiting for 15 minutes
+// Rate Limiting for 10 minutes
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
+    windowMs: 10 * 60 * 1000,
     max: 100 
 });
 app.use(limiter);
