@@ -2,12 +2,28 @@ const express = require('express')
 require("module-alias/register");
 const connectDB = require('@config/db')
 const dotenv = require('dotenv')
-
-dotenv.config();
+const cors = require('cors')
 
 const app = express();
 app.use(express.json());
+app.use(cors());
+dotenv.config();
+
 connectDB();
+
+// Rate Limiting for 15 minutes
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100 
+});
+app.use(limiter);
+
+app.use('/api', )
+
+// const __dirname = path.resolve()
+// app.get('/', (req, res) =>
+//   res.sendFile(path.resolve(__dirname, 'backend', 'views', 'index.html'))
+// )
 
 let PORT = process.env.PORT || 5000;
 
