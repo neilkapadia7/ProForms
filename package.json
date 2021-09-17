@@ -10,7 +10,8 @@
     "@service": "./service",
     "@routes": "./routes",
     "@config": "./config",
-    "@middleware": "./middleware"
+    "@middleware": "./middleware",
+    "@validation": "./validation"
   },
   "scripts": {
     "start": "node app.js"
@@ -31,6 +32,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
     "express-rate-limit": "^5.3.0",
     "express-validator": "^6.12.1",
     "jsonwebtoken": "^8.5.1",
