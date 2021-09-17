@@ -3,6 +3,8 @@ require("module-alias/register");
 const connectDB = require('@config/db')
 const dotenv = require('dotenv')
 const cors = require('cors')
+const rateLimit = require('express-rate-limit')
+const indexRoute = require('@routes/index');
 
 const app = express();
 app.use(express.json());
@@ -18,7 +20,7 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-app.use('/api', )
+app.use('/api', indexRoute)
 
 // const __dirname = path.resolve()
 // app.get('/', (req, res) =>

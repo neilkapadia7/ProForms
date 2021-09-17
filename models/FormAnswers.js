@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const FormAnswers = new mongoose.Schema({
     formId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'UserForm' },
+    userId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Users' },
     submittedOn: {type: Date},
     answers: [
         {

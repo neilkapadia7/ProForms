@@ -7,6 +7,7 @@ const UserForm = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    title: {type: String},
     questions: [
         {
             questionType: {
@@ -19,6 +20,8 @@ const UserForm = new mongoose.Schema({
     ],
     noOfQuestion: {type: Number},
     noOfSubmittedUser: {type: Number},
+    isPrivate: {type: Boolean, defaut: false},
+    isUserAuthorized: {type: Boolean, default: false},
 },{ 
     timestamps: {
         createdAt: true,
