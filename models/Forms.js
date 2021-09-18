@@ -22,6 +22,7 @@ const UserForm = new mongoose.Schema({
     noOfSubmittedUser: {type: Number},
     isPrivate: {type: Boolean, defaut: false},
     isUserAuthorized: {type: Boolean, default: false},
+    noTimesFetched: {type: Number, default: 0},
 },{ 
     timestamps: {
         createdAt: true,

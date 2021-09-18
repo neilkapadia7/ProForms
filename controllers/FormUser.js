@@ -1,5 +1,6 @@
 const Users = require('@models/Users')
 const FormAnswers = require('@models/FormAnswers')
+const Forms = require('@models/Forms')
 const Responder = require('@service/response')
 
 module.exports = {
@@ -25,19 +26,14 @@ module.exports = {
     // api/forms/user/form/:id
     async getForm (req, res) {
         try {
-            const {isUserAuthorized, isPrivate, questions, title, validityDate} = req.body;
-            let forms = await FormAnswers.findOne({_id: req.params.id})
+            let forms = await Forms.findOne({_id: req.params.id})
             if(!forms)
-                return Responder.respondWithCustomError(req, res, 'Invalid ID')
+                return Responder.respondWithCustomError(req, res, 'Invalid Form ID')
 
-            forms.isUserAuthorized = isUserAuthorized
-            forms.isPrivate = isPrivate
-            forms.questions = questions
-            forms.title = title
-            forms.validityDate = validityDate
+            forms.noTimesFetched++
             await forms.save()
             
-            return Responder.respondWithSuccess(req, res, newForm, 'Successfully Updated Form');
+            return Responder.respondWithSuccess(req, res, newForm, 'Form Fetched Successfully');
         }
         catch (err) {
             console.log(err);
