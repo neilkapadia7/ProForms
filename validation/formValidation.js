@@ -1,18 +1,22 @@
 const ValidationRule = require('@service/validation')
 
 module.exports = {
-  signUp() {
+  addForm() {
     return [
-      ValidationRule.isString('name'),
-      ValidationRule.isEmail('email'),
-      ValidationRule.isNumber('phone'),
-      ValidationRule.isString('password'),
+      ValidationRule.required('validityDate'),
+      ValidationRule.isString('title'),
+      ValidationRule.requiredArray('questions'),
+      ValidationRule.isBoolean('isPrivate'),
+      ValidationRule.isBoolean('isUserAuthorized'),
     ]
   },
-  login() {
+  updateForm() {
     return [
-      ValidationRule.isEmail('email'),
-      ValidationRule.isString('password'),
+      ValidationRule.required('validityDate'),
+      ValidationRule.isString('title'),
+      ValidationRule.requiredArray('questions'),
+      ValidationRule.isBoolean('isPrivate'),
+      ValidationRule.isBoolean('isUserAuthorized'),
     ]
   },
   OTPLogin() {
