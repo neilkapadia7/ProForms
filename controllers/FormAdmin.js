@@ -6,9 +6,12 @@ module.exports = {
     // api/forms/admin/add
     async addForm (req, res) {
         try {
+            let noOfQuestion = req.body.questions.length
+
             const newForm = await new Forms(
                 {
                     ...req.body, 
+                    noOfQuestion,
                     userId: req.user.id
                 }).save()
             return Responder.respondWithSuccess(req, res, newForm, 'Successfully Created Form');
