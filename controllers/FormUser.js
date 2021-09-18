@@ -8,6 +8,10 @@ module.exports = {
     // api/forms/user/submit-unauth
     async submitForm (req, res) {
         try {
+            let form = await Forms.findOne({_id: req.body.formId});
+            if(!form)
+                return Responder.respondWithNotFound(req, res, 'Form not found') 
+
             const newForm = await new FormAnswers(
                 {
                     ...req.body, 
@@ -15,6 +19,10 @@ module.exports = {
                     isGuestUser: req.user && req.user.id ? true : false,
                     ...(req.user && req.user.id && {userId: req.user.id}),
                 }).save()
+            
+            form.noOfSubmittedUser++
+            await form.save()
+
             return Responder.respondWithSuccess(req, res, newForm, 'Successfully Submitted Form');
         }
         catch (err) {
