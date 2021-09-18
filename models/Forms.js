@@ -19,7 +19,7 @@ const UserForm = new mongoose.Schema({
         }
     ],
     noOfQuestion: {type: Number},
-    noOfSubmittedUser: {type: Number},
+    noOfSubmittedUser: {type: Number, default: 0},
     isPrivate: {type: Boolean, defaut: false},
     isUserAuthorized: {type: Boolean, default: false},
     noTimesFetched: {type: Number, default: 0},

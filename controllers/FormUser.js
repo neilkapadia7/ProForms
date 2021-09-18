@@ -41,7 +41,7 @@ module.exports = {
             forms.noTimesFetched++
             await forms.save()
             
-            return Responder.respondWithSuccess(req, res, newForm, 'Form Fetched Successfully');
+            return Responder.respondWithSuccess(req, res, forms, 'Form Fetched Successfully');
         }
         catch (err) {
             console.log(err);
