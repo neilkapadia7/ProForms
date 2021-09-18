@@ -14,6 +14,7 @@ const FormAnswers = new mongoose.Schema({
             answer: {type: String}, 
         }
     ],
+    isGuestUser: {type: Boolean, default: true},
     noOfAnswers: {type: Number},
     noOfQuestions: {type: Number},
 },{ 

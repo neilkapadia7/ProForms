@@ -25,4 +25,13 @@ module.exports = {
       ValidationRule.isNumber('otps'),
     ]
   },
+
+  submitForm() {
+    return [
+      ValidationRule.requiredObjectId('formId'),
+      ValidationRule.requiredArray('answers'),
+      ValidationRule.isNumber('noOfAnswers'),
+      ValidationRule.isNumber('noOfQuestions'),
+    ]
+  },
 }
